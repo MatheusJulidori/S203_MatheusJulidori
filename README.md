@@ -1,5 +1,5 @@
 # S203 - Arquitetura de software
-## Códigos desenvolvidos na disciplina S203 2022.2
+## Códigos desenvolvidos na disciplina S203 L1 2022.2
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/matheusjulidori/S203?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/matheusjulidori/S203?style=for-the-badge)
