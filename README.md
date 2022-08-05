@@ -8,3 +8,25 @@
 ![GitHub stars](https://img.shields.io/github/stars/matheusjulidori/S203?style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/matheusjulidori/S203?style=for-the-badge)
 
+## Executando os códigos da disciplina
+
+Para executar os códigos, é necessário possuir Python 3.8 instalado no computador. Clone o repositório, e na linha de comando, digite:
+
+### Linux
+```bash
+sudo apt install python3.8 python3-pip python3.8-venv
+pip install -r requirements.txt
+```
+
+### MacOS
+```bash
+brew install python3.8
+pip install -r requirements.txt
+```
+
+### Windows
+Baixe e instale ![Python 3.8](https://www.python.org/downloads/release/python-3813/)
+
+```bash
+pip install -r requirements.txt
+```
