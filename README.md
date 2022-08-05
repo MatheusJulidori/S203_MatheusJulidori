@@ -10,17 +10,25 @@
 
 ## Executando os códigos da disciplina
 
-Para executar os códigos, é necessário possuir Python 3.8 instalado no computador. Clone o repositório, e na linha de comando, digite:
+Para executar os códigos, é necessário possuir Python 3.8 instalado no computador.
+Também é recomendado criar um virtual environment para executar os códigos.
+Clone o repositório, e na linha de comando, digite:
 
 ### Linux
 ```bash
+git clone https://github.com/MatheusJulidori/S203_MatheusJulidori.git
 sudo apt install python3.8 python3-pip python3.8-venv
+python -m venv ./venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
 ### MacOS
 ```bash
+git clone https://github.com/MatheusJulidori/S203_MatheusJulidori.git
 brew install python3.8
+python -m venv ./venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -28,5 +36,8 @@ pip install -r requirements.txt
 Baixe e instale ![Python 3.8](https://www.python.org/downloads/release/python-3813/)
 
 ```bash
+git clone https://github.com/MatheusJulidori/S203_MatheusJulidori.git
+python -m venv ./venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
