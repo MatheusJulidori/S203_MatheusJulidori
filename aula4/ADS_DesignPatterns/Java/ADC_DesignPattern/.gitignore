@@ -1,5 +1,4 @@
-out
-.vscode
-.idea
+/out/*.*
+/.vscode/*.*
+/.idea/*.*
 ADC_DesignPattern.iml
-README.md
