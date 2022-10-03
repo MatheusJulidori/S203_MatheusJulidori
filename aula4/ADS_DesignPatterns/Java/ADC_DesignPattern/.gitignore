@@ -2,3 +2,6 @@
 /.vscode/*.*
 /.idea/*.*
 ADC_DesignPattern.iml
+/.idea/
+/.vscode/
+/out/
