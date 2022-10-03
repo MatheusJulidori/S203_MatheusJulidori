@@ -1,14 +1,14 @@
-package builder;
+package APIFluente;
 
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class CarroBuilderTest {
+public class CarroBuilderFluenteTest {
 
     @Test
     public void deveConstruirUmCarro() {
-        CarroBuilder builder = new CarroBuilder();
+
 
         //Criando as partes do carro
         Motor motor = new Motor();
@@ -19,12 +19,12 @@ public class CarroBuilderTest {
         FreioABS freioABS = new FreioABS();
 
         //Adicionando os componentes ao carro
-        builder.buildMotor(motor);
-        builder.buildPortas(portas);
-        builder.buildComputadorBordo(computadorBordo);
-        builder.buildFreioABS(freioABS);
-
-        Carro carro = builder.getCarro();
+        Carro carro = new CarroBuilderFluente()
+                .buildComputadorBordo(computadorBordo)
+                .buildMotor(motor)
+                .buildPortas(portas)
+                .buildFreioABS(freioABS)
+                .getCarro();
 
         //Testando o carro
         assertNotNull(carro);
