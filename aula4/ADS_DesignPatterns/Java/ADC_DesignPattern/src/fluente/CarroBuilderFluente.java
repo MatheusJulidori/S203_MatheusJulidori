@@ -1,4 +1,4 @@
-package APIFluente;
+package fluente;
 
 public class CarroBuilderFluente {
     
@@ -29,6 +29,8 @@ public class CarroBuilderFluente {
     }
 
     public Carro getCarro(){
+        validarMotor();
+        validarPortas();
         return this.carro;
     }
 

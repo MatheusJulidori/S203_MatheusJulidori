@@ -1,4 +1,4 @@
-package APIFluente;
+package fluente;
 
 import org.junit.Test;
 

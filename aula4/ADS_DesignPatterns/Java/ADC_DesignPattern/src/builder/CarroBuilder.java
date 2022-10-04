@@ -26,6 +26,8 @@ public class CarroBuilder {
     }
 
     public Carro getCarro(){
+        validarMotor();
+        validarPortas();
         return this.carro;
     }
 
