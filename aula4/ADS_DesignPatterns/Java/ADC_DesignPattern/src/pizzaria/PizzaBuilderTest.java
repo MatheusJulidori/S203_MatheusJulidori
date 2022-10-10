@@ -2,13 +2,12 @@ package pizzaria;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class PizzaBuilderTest {
 
     @Test
-    public void deveConstruirUmaPizza() {
+    public void deveConstruirUmaPizzaValida() {
         Pizza pizza = new PizzaBuilder()
                 .setTamanho(1)
                 .addPepperoni(true)
@@ -16,11 +15,40 @@ public class PizzaBuilderTest {
                 .getPizza();
 
         assertNotNull(pizza);
-        assertEquals(pizza.getTamanho(), Integer.valueOf(1));
+        assertNotNull(pizza.getTamanho());
         assertEquals(pizza.getPepperoni(), Boolean.TRUE);
         assertEquals(pizza.getQueijo(), Boolean.TRUE);
 
 
     }
 
+    @Test
+    public void deveInvalidarUmaPizzaComTamanhoErrado() {
+        try{
+            Pizza pizza = new PizzaBuilder()
+                    .setTamanho(4)
+                    .addPepperoni(true)
+                    .addQueijo(true)
+                    .getPizza();
+
+            fail("Deveria ter lançado exceção");
+        }catch (IllegalStateException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void deveInvalidarPizzaSemIngredientes() {
+        try{
+            Pizza pizza = new PizzaBuilder()
+                    .setTamanho(1)
+                    .addPepperoni(false)
+                    .addQueijo(false)
+                    .getPizza();
+
+            fail("Deveria ter lançado exceção");
+        }catch (IllegalStateException e){
+            e.printStackTrace();
+        }
+    }
 }
