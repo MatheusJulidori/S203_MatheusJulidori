@@ -13,13 +13,13 @@ public class PizzaBuilder {
         return this;
     }
 
-    public PizzaBuilder addPepperoni(Boolean pepperoni){
-        pizza.setPepperoni(pepperoni);
+    public PizzaBuilder addPepperoni( ){
+        pizza.setPepperoni(true);
         return this;
     }
 
-    public PizzaBuilder addQueijo(Boolean queijo){
-        pizza.setQueijo(queijo);
+    public PizzaBuilder addQueijo( ){
+        pizza.setQueijo(true);
         return this;
     }
 

@@ -10,8 +10,8 @@ public class PizzaBuilderTest {
     public void deveConstruirUmaPizzaValida() {
         Pizza pizza = new PizzaBuilder()
                 .setTamanho(1)
-                .addPepperoni(true)
-                .addQueijo(true)
+                .addPepperoni()
+                .addQueijo()
                 .getPizza();
 
         assertNotNull(pizza);
@@ -27,8 +27,8 @@ public class PizzaBuilderTest {
         try{
             Pizza pizza = new PizzaBuilder()
                     .setTamanho(4)
-                    .addPepperoni(true)
-                    .addQueijo(true)
+                    .addPepperoni()
+                    .addQueijo()
                     .getPizza();
 
             fail("Deveria ter lançado exceção");
@@ -42,8 +42,6 @@ public class PizzaBuilderTest {
         try{
             Pizza pizza = new PizzaBuilder()
                     .setTamanho(1)
-                    .addPepperoni(false)
-                    .addQueijo(false)
                     .getPizza();
 
             fail("Deveria ter lançado exceção");
