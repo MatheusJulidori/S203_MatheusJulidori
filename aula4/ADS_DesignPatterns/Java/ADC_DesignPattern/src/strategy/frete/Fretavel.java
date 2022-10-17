@@ -1,6 +1,8 @@
 package strategy.frete;
 
-public interface Fretavel {
-    double calcularValor(double pesoEmKg);
+
+public interface Fretavel{
+	
+    public double calculaValor(double pesoEmKg);
 
 }

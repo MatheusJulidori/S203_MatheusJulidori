@@ -4,8 +4,8 @@ import strategy.frete.Fretavel;
 
 public class CalculadoraFrete {
 
-    public double calcularValor(Fretavel fretavel, double pesoEmKg){
-        return fretavel.calcularValor(pesoEmKg);
+    public double calculaValor(Fretavel fretavel, double pesoEmKg){
+        return fretavel.calculaValor(pesoEmKg);
     }
 
 }
