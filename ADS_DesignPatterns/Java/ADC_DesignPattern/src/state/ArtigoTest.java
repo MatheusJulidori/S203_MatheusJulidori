@@ -4,78 +4,55 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ArtigoTest {
-
-    GerenteSeguranca gerenteSeguranca = GerenteSeguranca.getInstance();
+class ArtigoTest {
 
     @Test
-    public void deveArtigoTrasitarDeRascunhoAteAprovado(){
+    void deveArtigoTransitarDeRascunhoAteAprovado() {
+        GerenteDeSeguranca gerenteDeSeguranca = GerenteDeSeguranca.getInstance();
 
         Artigo artigo = new Artigo();
-        assertEquals("RASCUNHO", artigo.getEstado());
-        gerenteSeguranca.setUsuarioLogado("AUTOR");
+
+        assertTrue(artigo.getEstado() instanceof EstadoRascunho);
+
+        //1-Rascunho -> Revisando
+        gerenteDeSeguranca.setUsuarioCorrente("AUTOR");
         artigo.publicar();
-        assertEquals("REVISANDO", artigo.getEstado());
-        gerenteSeguranca.setUsuarioLogado("MODERADOR");
+
+        assertTrue(artigo.getEstado() instanceof EstadoRevisando);
+
+        //2-Revisando -> Aprovado
+        gerenteDeSeguranca.setUsuarioCorrente("MODERADOR");
         artigo.publicar();
-        assertEquals("APROVADO", artigo.getEstado());
+
+        assertTrue(artigo.getEstado() instanceof EstadoAprovado);
+
+        //imprime o historico
+        artigo.getLogHistorico().forEach(System.out::println);
+
     }
 
     @Test
-    public void deveArtigoTrasitarDeRascunhoAteReprovado(){
+    void deveArtigoTransitarDeRascunho_Revisando_Rascunho() {
+        GerenteDeSeguranca gerenteDeSeguranca = GerenteDeSeguranca.getInstance();
+
         Artigo artigo = new Artigo();
-        assertEquals("RASCUNHO", artigo.getEstado());
-        gerenteSeguranca.setUsuarioLogado("AUTOR");
+
+        assertTrue(artigo.getEstado() instanceof EstadoRascunho);
+
+        //1-Rascunho -> Revisando
+        gerenteDeSeguranca.setUsuarioCorrente("AUTOR");
         artigo.publicar();
-        assertEquals("REVISANDO", artigo.getEstado());
-        gerenteSeguranca.setUsuarioLogado("MODERADOR");
+
+        assertTrue(artigo.getEstado() instanceof EstadoRevisando);
+
+        //2-Revisando -> Rascunho
+        gerenteDeSeguranca.setUsuarioCorrente("MODERADOR");
         artigo.reprovar();
-        assertEquals("RASCUNHO", artigo.getEstado());
+
+        assertTrue(artigo.getEstado() instanceof EstadoRascunho);
+
+        //imprime o historico
+        artigo.getLogHistorico().forEach(System.out::println);
     }
 
-    @Test
-    public void deveFalharPorNaoTerAutorizacaoDeModerador(){
-        Artigo artigo = new Artigo();
-        assertEquals("RASCUNHO", artigo.getEstado());
-        gerenteSeguranca.setUsuarioLogado("AUTOR");
-        artigo.publicar();
-        assertEquals("REVISANDO", artigo.getEstado());
-        try{
-            artigo.publicar();
-
-            fail("Deveria ter dado erro de autorização");
-        }catch (RuntimeException e){
-            e.printStackTrace();
-        }
-        assertEquals("REVISANDO", artigo.getEstado());
-    }
-
-    @Test
-    public void deveFalharPorNaoTerAutorizacaoDeAutor(){
-        Artigo artigo = new Artigo();
-        assertEquals("RASCUNHO", artigo.getEstado());
-        gerenteSeguranca.setUsuarioLogado("OUTRO");
-        try{
-            artigo.publicar();
-
-            fail("Deveria ter dado erro de autorização");
-        }catch (RuntimeException e){
-            e.printStackTrace();
-        }
-        assertEquals("RASCUNHO", artigo.getEstado());
-    }
-
-    @Test
-    public void deveExibirLog(){
-        Artigo artigo = new Artigo();
-        gerenteSeguranca.setUsuarioLogado("AUTOR");
-        artigo.publicar();
-        gerenteSeguranca.setUsuarioLogado("MODERADOR");
-        artigo.reprovar();
-        gerenteSeguranca.setUsuarioLogado("AUTOR");
-        artigo.publicar();
-        gerenteSeguranca.setUsuarioLogado("MODERADOR");
-        artigo.publicar();
-        assertNotNull(artigo.getLogHistorico());
-    }
 }
