@@ -16,7 +16,7 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoService service;
 	
-	@GetMapping("/produtos")
+	@GetMapping("/lista-de-produtos")
 	public String getProdutos(Model model) {
 		List<Produto> produtos = service.findAll();
 		model.addAttribute("listaDeProdutos", produtos);
