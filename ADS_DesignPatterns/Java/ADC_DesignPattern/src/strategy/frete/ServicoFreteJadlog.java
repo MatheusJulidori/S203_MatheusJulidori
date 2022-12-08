@@ -1,16 +1,16 @@
 package strategy.frete;
 
-public class ServicoFreteJadlog implements Fretavel{
+public class ServicoFreteJadLog implements Fretavel {
 
-    @Override
-    public double calculaValor(double pesoEmKg) {
-        if(pesoEmKg< 10.0) {
-            return 54.0;
-        }else if(pesoEmKg< 20.0){
-            return 74.0;
-        }else{
-            return 94.0;
-        }
-    }
+	@Override
+	public double calculaValor(double pesoEmKg) {
+
+		if (pesoEmKg < 30.0) {
+			return 0.00;
+		} else {
+			return 150.00;
+		}
+
+	}
 
 }
