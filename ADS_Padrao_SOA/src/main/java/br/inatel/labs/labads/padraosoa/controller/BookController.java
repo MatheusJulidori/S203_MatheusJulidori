@@ -10,38 +10,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("book")
 public class BookController {
 	
 	@Autowired 
 	private BookService service;
-	
+
 	@GetMapping
 	public List<Book> getAllBook(){
-		List <Book> books = service.searchBook();
-		return books;
+		return service.searchBook();
 	}
-	
 	@GetMapping("/{id}")
 	public Book getBookById(@PathVariable("id") Long bookId) {
 		Optional<Book> opBook = service.findBookById(bookId);
 		if(opBook.isPresent()) {
-			Book book = opBook.get();
-			return book;
+			return opBook.get();
 		} else {
 			//temporário
 			String msg_erro = "There is no Book with id " + bookId;
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, msg_erro);
 		} 
 	}
-	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Book postBook(@RequestBody Book newBook) {
-		Book createdBook = service.createBook(newBook);
-		return createdBook;
+		return service.createBook(newBook);
 	}
 	
 }

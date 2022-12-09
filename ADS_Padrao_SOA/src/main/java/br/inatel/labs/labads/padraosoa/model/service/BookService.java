@@ -20,10 +20,12 @@ public class BookService {
 		Book b1 = new Book(1L, "Harry Potter", "Magia");
 		Book b2 = new Book(2L, "Python", "Programação");
 		Book b3 = new Book(3L, "Cozinha Mineira", "Gastronomia");
+		Book b4 = new Book(4L, "Lord of The Rings", "Fantasia");
 		
 		bookList.add(b1);
 		bookList.add(b2);
 		bookList.add(b3);
+		bookList.add(b4);
 	}
 	
 	public List<Book> searchBook(){
